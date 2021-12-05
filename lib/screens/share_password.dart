@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class SharePassword extends StatelessWidget {
-  Map<String, dynamic> password;
+  SavedPasswordEntry password;
 
   SharePassword({
     Key? key,
@@ -40,21 +40,20 @@ class SharePassword extends StatelessWidget {
           children: [
             HeaderBar(
               needBackButton: true,
-              title: password['websiteNickname'],
+              title: password.websiteNickname,
               icon: FlutterRemix.pencil_line,
               onButtonPress: () => log("Changing the button"),
             ),
             QrCodeDisplay(
-              data:
-                  "${password['entryUsername']}: ${password['entryPassword']}",
+              data: "${password.entryUsername}: ${password.entryPassword}",
             ),
             TextInput(
-              hintFragment: password['entryUsername'],
+              hintFragment: password.entryUsername,
               inputLabel: "Username",
               icon: FlutterRemix.account_circle_line,
             ),
             TextInput(
-              hintFragment: password['entryPassword'],
+              hintFragment: password.entryPassword,
               inputLabel: "Password",
               icon: FlutterRemix.key_line,
               needGenerateIcon: true,

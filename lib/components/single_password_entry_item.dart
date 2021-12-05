@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
+import 'package:kryptonite/model/saved_password_entry.dart';
 import 'package:kryptonite/screens/share_password.dart';
 
 class SinglePasswordEntryItem extends StatelessWidget {
@@ -15,7 +16,7 @@ class SinglePasswordEntryItem extends StatelessWidget {
     }
   }
 
-  late Map<String, dynamic> passwordList;
+  late SavedPasswordEntry passwordList;
 
   SinglePasswordEntryItem({
     Key? key,
@@ -36,7 +37,7 @@ class SinglePasswordEntryItem extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: checkColor(
-                passwordList['passwordStatus'],
+                passwordList.passwordStatus,
               ),
               borderRadius: BorderRadius.circular(8),
             ),
@@ -49,12 +50,12 @@ class SinglePasswordEntryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  passwordList['websiteNickname'],
+                  passwordList.websiteNickname,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
-                  passwordList['entryUsername'],
+                  passwordList.entryUsername,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],

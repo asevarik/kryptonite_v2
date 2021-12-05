@@ -10,7 +10,6 @@ import 'package:kryptonite/components/text_input.dart';
 class GeneratePasswordScreen extends StatefulWidget {
   GeneratePasswordScreen({
     Key? key,
-    required List<Map<String, dynamic>> passwordList,
   }) : super(key: key);
 
   @override
@@ -21,11 +20,16 @@ class _GeneratePasswordScreenState extends State<GeneratePasswordScreen> {
   final _generatePasswordFormKey = GlobalKey<FormState>();
   late FocusNode userNameFocus;
   late FocusNode passwordFocus;
-
+  late TextEditingController websiteNickNameController;
+  late TextEditingController entryUserNameController;
+  late TextEditingController entryPasswordController;
   @override
   void initState() {
     userNameFocus = FocusNode();
     passwordFocus = FocusNode();
+    websiteNickNameController = TextEditingController();
+    entryUserNameController = TextEditingController();
+    entryPasswordController = TextEditingController();
     super.initState();
   }
 
@@ -72,12 +76,14 @@ class _GeneratePasswordScreenState extends State<GeneratePasswordScreen> {
                             hintFragment: "Account/Website Nickname",
                             inputLabel: "Account/Website Nickname",
                             icon: FlutterRemix.global_line,
+                            controller: websiteNickNameController,
                             focus: true,
                             nextFocus: userNameFocus,
                           ),
                           TextInput(
                             hintFragment: "Enter Username",
                             inputLabel: "Username",
+                            controller: entryUserNameController,
                             icon: FlutterRemix.account_circle_line,
                             focusNode: userNameFocus,
                             nextFocus: passwordFocus,
@@ -86,6 +92,7 @@ class _GeneratePasswordScreenState extends State<GeneratePasswordScreen> {
                             hintFragment: "Enter Password",
                             inputLabel: "Generate Password",
                             icon: FlutterRemix.key_2_line,
+                            controller: entryPasswordController,
                             hideText: false,
                             focusNode: passwordFocus,
                           ),

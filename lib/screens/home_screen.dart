@@ -26,6 +26,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final passWordprovider = Provider.of<PasswordData>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: collapseAppBar(),
@@ -48,14 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     PwnedBox(),
                     ListHeading(),
                     ListView.builder(
-                      itemCount: Provider.of<PasswordData>(context)
-                          .passwordEntries
-                          .length,
+                      itemCount: passWordprovider.getpasswordData.length,
                       addAutomaticKeepAlives: true,
                       shrinkWrap: true,
                       itemBuilder: (context, index) => SinglePasswordEntryItem(
-                        passwordList: Provider.of<PasswordData>(context)
-                            .passwordEntries[index],
+                        passwordList: passWordprovider.passwordData[index],
                       ),
                     ),
                   ],
@@ -83,10 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => GeneratePasswordScreen(
-                  passwordList:
-                      Provider.of<PasswordData>(context).passwordEntries,
-                ),
+                builder: (context) => GeneratePasswordScreen(),
               ),
             ),
             heroTag: "generate",

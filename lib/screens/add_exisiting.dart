@@ -48,6 +48,7 @@ class _AddExistingPasswordScreenState extends State<AddExistingPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final passwordProvider = Provider.of<PasswordData>(context, listen: false);
     return Scaffold(
       appBar: collapseAppBar(),
       body: SafeArea(
@@ -114,23 +115,28 @@ class _AddExistingPasswordScreenState extends State<AddExistingPasswordScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          String website = websiteNickNameController.text;
-          String username = userNameController.text;
-          String password = passwordController.text;
+          passwordProvider.addUserData(
+              websiteNickName: websiteNickNameController.text,
+              entryUsername: userNameController.text,
+              entryPassword: passwordController.text,
+              passwordStatus: 'headlthy');
+          // String website = websiteNickNameController.text;
+          // String username = userNameController.text;
+          // String password = passwordController.text;
 
-          log('$website, $username, $password');
+          // log('$website, $username, $password');
 
-          Provider.of<PasswordData>(context, listen: false).addUserData(
-            id: 4,
-            websiteNickName: website.toString(),
-            entryUsername: username.toString(),
-            entryPassword: password.toString(),
-            passwordStatus: 'Healthy',
-          );
+          // passwordProvider.addUserData(
+          //   id: 4,
+          //   websiteNickName: "website.toString()",
+          //   entryUsername: "username.toString()",
+          //   entryPassword: "password.toString()",
+          //   passwordStatus: 'Healthy',
+          // );
 
-          log(Provider.of<PasswordData>(context, listen: false)
-              .passwordEntries[3]
-              .toString());
+          // log(Provider.of<PasswordData>(context, listen: false)
+          //     .passwordEntries[3]
+          //     .toString());
 
           if (_addExistingPasswordFormKey.currentState!.validate()) {
             ScaffoldMessenger.of(context).showSnackBar(
