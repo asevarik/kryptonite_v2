@@ -42,6 +42,7 @@ class TextInput extends StatelessWidget {
         ),
         Material(
           child: InputWidget(
+            initialTextVal: hintFragment,
             icon: icon,
             needGenerateIcon: needGenerateIcon,
             hintFragment: hintFragment,

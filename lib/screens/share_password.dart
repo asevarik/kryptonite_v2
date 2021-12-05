@@ -16,7 +16,6 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 class SharePassword extends StatelessWidget {
   SavedPasswordEntry password;
-
   SharePassword({
     Key? key,
     required this.password,
@@ -24,6 +23,7 @@ class SharePassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final passwordProdvider = Provider.of<PasswordData>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(FlutterRemix.check_line),
@@ -42,12 +42,17 @@ class SharePassword extends StatelessWidget {
               needBackButton: true,
               title: password.websiteNickname,
               icon: FlutterRemix.pencil_line,
-              onButtonPress: () => log("Changing the button"),
+              onButtonPress: () {
+                passwordProdvider.deleteUserData(password.index);
+                Navigator.pop(context);
+                log("Changing the button");
+              },
             ),
             QrCodeDisplay(
               data: "${password.entryUsername}: ${password.entryPassword}",
             ),
             TextInput(
+              
               hintFragment: password.entryUsername,
               inputLabel: "Username",
               icon: FlutterRemix.account_circle_line,

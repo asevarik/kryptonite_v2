@@ -116,10 +116,12 @@ class _AddExistingPasswordScreenState extends State<AddExistingPasswordScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           passwordProvider.addUserData(
+              index: passwordProvider.getpasswordData.length,
               websiteNickName: websiteNickNameController.text,
               entryUsername: userNameController.text,
               entryPassword: passwordController.text,
               passwordStatus: 'headlthy');
+          log(passwordProvider.getpasswordData.toString());
           // String website = websiteNickNameController.text;
           // String username = userNameController.text;
           // String password = passwordController.text;

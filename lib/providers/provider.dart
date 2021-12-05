@@ -9,6 +9,7 @@ class PasswordData extends ChangeNotifier {
   final bool usedGoogleSignin = false;
   List<SavedPasswordEntry> passwordData = [
     SavedPasswordEntry(
+      index: 0,
       websiteNickname: "Netflix",
       entryUsername: "xyz@gmail.com",
       entryPassword: "12345",
@@ -16,6 +17,7 @@ class PasswordData extends ChangeNotifier {
       isPasswordStrong: false,
     ),
     SavedPasswordEntry(
+      index: 1,
       websiteNickname: "amazon",
       entryUsername: "xyz@gmail.com",
       entryPassword: "12345",
@@ -23,6 +25,7 @@ class PasswordData extends ChangeNotifier {
       isPasswordStrong: false,
     ),
     SavedPasswordEntry(
+      index: 2,
       websiteNickname: "Zee5",
       entryUsername: "xyz@gmail.com",
       entryPassword: "12345",
@@ -59,11 +62,12 @@ class PasswordData extends ChangeNotifier {
   //     "isPasswordCurrentlyBeingEdited": false,
   //   },
   // ];
+
   //getter function
   List<SavedPasswordEntry> get getpasswordData => passwordData;
 
   void addUserData({
-    // required int id,
+    required int index,
     required String websiteNickName,
     required String entryUsername,
     required String entryPassword,
@@ -73,6 +77,7 @@ class PasswordData extends ChangeNotifier {
   }) {
     //just add the password entries like this way and as for index this whole savedPassword entry is index
     passwordData.add(SavedPasswordEntry(
+      index: index,
       websiteNickname: websiteNickName,
       entryUsername: entryUsername,
       entryPassword: entryPassword,
@@ -85,7 +90,7 @@ class PasswordData extends ChangeNotifier {
   }
 
   void deleteUserData(int index) {
-    // passwordEntries.removeAt(index);
+    passwordData.removeAt(index);
     notifyListeners();
   }
 

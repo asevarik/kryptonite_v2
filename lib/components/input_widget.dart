@@ -14,6 +14,7 @@ class InputWidget extends StatelessWidget {
     this.focusNode,
     this.nextFocus,
     this.controller,
+    this.initialTextVal,
   }) : super(key: key);
 
   final IconData icon;
@@ -23,11 +24,13 @@ class InputWidget extends StatelessWidget {
   final bool focus;
   final FocusNode? focusNode;
   final FocusNode? nextFocus;
+  final String? initialTextVal;
   final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialTextVal,
       decoration: InputDecoration(
         prefixIcon: Icon(icon),
         suffixIcon: needGenerateIcon
