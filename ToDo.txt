@@ -1,0 +1,10 @@
+# 1. Handle Inputs
+# 2. Add the items from the inputs to the class
+# 3. Implement the provider package
+    4. Perform CRUD on State
+    5. Make the widgets re-render
+    6. Perform the API calls
+    7. Get and store the data
+    8. Display the updated data
+    9. Implement Firebase authentication
+    10. Handle the splash screen
